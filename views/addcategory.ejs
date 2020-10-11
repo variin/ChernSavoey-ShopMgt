@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <!--css-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <!--font-->
+  <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+</head>
+
+<body>
+
+  <div class="font">
+    <h4 align="center">แบบฟอร์มบันทึกประเภทสินค้า</h4>
+    <form action="/addCategories" method="POST">
+      <div class="form-group">
+        <label for="">ชื่อประเภทสินค้า</label>
+        <input type="text" name="categoryName" value="" class="form-control" id="addCategories">
+      </div>
+      <!-- <input type="submit" onclick="submitAddCategory()" value="บันทึกข้อมูล" class="btn btn-success"> -->
+      <input type="submit" value="บันทึกข้อมูล" class="btn btn-success">
+    </form>  
+  </div>
+
+  <p id ="hid-categoryName"></p>
+  
+ <!--เก็บ Category Name-->
+  <input type="hidden" id="hid-categoryName">
+
+</body>
+
+<style>
+  .font {
+    font-family: kanit;
+  }
+</style>
+
+<script>
+  function submitAddCategory() {
+    var addCategory = document.getElementById("addCategories").value;
+    document.getElementById("hid-categoryName").innerHTML= addCategories; 
+  }
+  </script>
+
+</html>

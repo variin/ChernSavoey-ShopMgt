@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet'
+        type='text/css'>
+    <!-- Delete Button -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <%- include ("layout.ejs") %>
+
+    <!-- Page Content -->
+    <div class="container font">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <h1 class="my-4"><%= shopName %></h1>
+                <div class="list-group">
+
+                    <% categoriesList.forEach((categories) => { %>
+                    <li class="list-group-item"><a
+                            href="/<%= categories.categoryId %>"><%= categories.categoryName %></a>
+                    </li>
+                    <% }); %>
+                    <a href="/addcategory" class="list-group-item"
+                        style="background-color:mediumseagreen;color: oldlace;">เพิ่มประเภทสินค้า</a>
+                </div>
+
+                <div class="list-group" style="margin-top:10px;">
+                    <a href="/addproduct" class="list-group-item"
+                        style="background-color:mediumseagreen;color: oldlace;">เพิ่มสินค้าสินค้า</a>
+                </div>
+
+            </div>
+
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9" style="margin-top: 10%; margin-bottom: 10%;">
+
+                <div class="row">
+                    <% menuList.forEach((menu) => { %>
+                    <div class="col-lg-4 col-md-6 mb-4" id="menuList">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="<%= menu.menuImg %>" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <%= menu.menuName %>
+                                </h4>
+                                <h5><%= menu.price %> บาท</h5>
+                                <p class="card-text"><%= menu.menuDetail %></p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="get-data btn shop-item-button"
+                                    style="margin-right:5%;margin-left:7%; width:40%; background-color :mediumseagreen;">
+                                    <a href="#" style="color: white; text-decoration: none;"> แก้ไข </a></button>
+                                <button class="get-data btn shop-item-button"
+                                    style="width:40%; color:white;background-color :#CC3333;" data-toggle="modal"
+                                    data-target="#myModal"> ลบสินค้า </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <% }); %>
+                </div>
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Delete Button -->
+    <!-- Modal -->
+    <div class="modal fade font" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center;">
+                    <p>ยืนยันการลบสินค้า</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="background-color:#CC3333; color: white;"
+                        data-dismiss="modal">ยืนยัน</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<style>
+    .font {
+        font-family: kanit;
+    }
+</style>
+
+</html>
