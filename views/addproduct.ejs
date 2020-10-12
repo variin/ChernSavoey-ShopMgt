@@ -30,11 +30,13 @@
           <div class="col-sm-12">
             <p> ประเภทสินค้า</p>
 
-            <% categoriesList.forEach((categories) => { %>
+            
             <select class="form-control form-control-sm">
+              <% categoriesList.forEach((categories) => { %>
               <option><%= categories.categoryName %></option>
+              <% }); %>
             </select>
-            <% }); %>
+           
 
           </div>
         </div>
