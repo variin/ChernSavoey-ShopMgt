@@ -21,7 +21,7 @@
 
   <div class="font">
     <h4 align="center">แบบฟอร์มบันทึกประเภทสินค้า</h4>
-    <form action="/addCategories" method="POST">
+    <form action="/addcategory/addCategories" method="post">
       <div class="form-group">
         <label for="">ชื่อประเภทสินค้า</label>
         <input type="text" name="categoryName" value="" class="form-control" id="addCategories">
@@ -31,10 +31,10 @@
     </form>  
   </div>
 
-  <p id ="hid-categoryName"></p>
+  <!-- <p id ="hid-categoryName"></p> -->
   
  <!--เก็บ Category Name-->
-  <input type="hidden" id="hid-categoryName">
+  <!-- <input type="hidden" id="hid-categoryName"> -->
 
 </body>
 
@@ -44,11 +44,11 @@
   }
 </style>
 
-<script>
+<!-- <script>
   function submitAddCategory() {
     var addCategory = document.getElementById("addCategories").value;
     document.getElementById("hid-categoryName").innerHTML= addCategories; 
   }
-  </script>
+  </script> -->
 
 </html>
