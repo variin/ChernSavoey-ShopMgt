@@ -29,7 +29,13 @@
         <div class="form-group">
           <div class="col-sm-12">
             <p> ประเภทสินค้า</p>
-            <input type="text"  name="p_name" class="form-control" required placeholder="ชื่อสินค้า" />
+
+            <% categoriesList.forEach((categories) => { %>
+            <select class="form-control form-control-sm">
+              <option><%= categories.categoryName %></option>
+            </select>
+            <% }); %>
+
           </div>
         </div>
         <div class="form-group">

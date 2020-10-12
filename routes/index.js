@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
   const categoryId = req.params.categoryId;
 
   const menuDetails = await db.collection("store")
-        .doc("KkTmqhsEwfwoCB4qw8Pq")
+        .doc("cafeAmazon")
         .get()
         .then((querySnapshot) => querySnapshot.data());
 
@@ -43,7 +43,7 @@ router.get("/:categoryId", async (req, res) => {
   const categoryId = req.params.categoryId;
 
   const menuDetails = await db.collection("store")
-        .doc("KkTmqhsEwfwoCB4qw8Pq")
+        .doc("cafeAmazon")
         .get()
         .then((querySnapshot) => querySnapshot.data());
 
@@ -65,4 +65,19 @@ router.get("/:categoryId", async (req, res) => {
   res.render("index", { storeId, shopName, menuList, categoriesList, categoriesFilter, });
 }
 );
+
+router.delete('/deleteMenu/:categoryId', async function (req, res, next) {
+      const categoryId = req.params.categoryId;
+      const storeID = req.body.storeID;
+      const menuDetail = req.body.menuDetail;
+      const menuID = req.body.menuID;
+      const menuImg = req.body.menuImg;
+      const menuName = req.body.menuName;
+  
+      const storeRef = db.collection('store').doc(storeID);
+      await storeRef.update({
+          "menu": await firebase.firestore.FieldValue.arrayRemove({ "category": categoryId, "menuDetail": menuDetail, "menuID": menuID, "menuImg": menuImg, "menuName": menuName })
+      })
+  });
+
 module.exports = router;

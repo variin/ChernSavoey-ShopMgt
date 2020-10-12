@@ -12,12 +12,13 @@ router.post('/addCategories', async function (req, res, next) {
     // let storeID = req.body.storeID;
     let old_Categories_to_count = [];
 
-    let checkStore = db.collection('store').doc('KkTmqhsEwfwoCB4qw8Pq');
+    let checkStore = db.collection('store').doc('cafeAmazon');
     await checkStore.get().then(async data => {
         if (data.empty) {
             console.log('You do not have store in system');
+
         } else {
-            let getCategories = db.collection('store').doc('KkTmqhsEwfwoCB4qw8Pq');
+            let getCategories = db.collection('store').doc('cafeAmazon');
             console.log('getCategories' + getCategories)
             await getCategories.get().then(async doc => {
                 await old_Categories_to_count.push(doc.data());
@@ -38,13 +39,14 @@ router.post('/addCategories', async function (req, res, next) {
 
                 await all_Categories.push(new_Categories);
 
-                let addCategoriesToStore = db.collection('store').doc('KkTmqhsEwfwoCB4qw8Pq');
-                await addCategoriesToStore.set({
+                let addCategoriesToStore = db.collection('store').doc('cafeAmazon');
+                await addCategoriesToStore.update({
                     categories: all_Categories
                 });
             });
         }
     })
+    res.redirect("/")
 });
 
 module.exports = router;
