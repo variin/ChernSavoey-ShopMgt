@@ -67,19 +67,34 @@ router.get("/:categoryId", async (req, res) => {
 }
 );
 
- router.delete("/deleteMenu/:categoryId", async function (req, res, next) {
+ router.get("/deleteMenu/:categoryId/:menuId", async function (req, res, next) {
       const categoryId = req.params.categoryId;
+      const menuId = req.params.menuId;
+      console.log(categoryId);
+      console.log(menuId);
+      
       //const storeID = req.body.storeID;
       //const menuDetail = req.body.menuDetail;
-      const menuId = req.body.menuId;
-      const menuImg = req.body.menuImg;
-      const menuName = req.body.menuName;
-      const price = req.body.price;
-  
+      // const menuId = req.body.menuId;
+      // const menuImg = req.body.menuImg;
+      // const menuName = req.body.menuName;
+      // const price = req.body.price;
+ 
+      // ลบหมดเลยยยย
+      // const storeRef = db.collection('store').doc("cafeAmazon");
+      // storeRef.delete({"menuID": menuId})
+
+
+
       const storeRef = db.collection('store').doc("cafeAmazon");
       await storeRef.update({
-           "menu": await firebase.firestore.FieldValue.arrayRemove
-           ({ "category": categoryId, "menuId": menuId, "menuImg": menuImg, "menuName": menuName, "price": price })
+            "menu": await firebase.firestore.FieldValue.arrayRemove(
+            {     "category": categoryId, 
+                  "menuId": menuId, 
+                  "menuImg": menuImg, 
+                  "menuName": menuName, 
+                  "price" : price, 
+                  "qty": qty })
       })
   });
 
