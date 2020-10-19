@@ -1,5 +1,6 @@
 var express = require('express');
 const db = require('../model/db');
+const methodOverride = require('method-override');
 
 var router = express.Router();
 
@@ -66,20 +67,19 @@ router.get("/:categoryId", async (req, res) => {
 }
 );
 
- //router.delete('/deleteMenu/:categoryId', async function (req, res, next) {
-router.delete('/deleteMenu', async function (req, res, next) {
+ router.delete("/deleteMenu/:categoryId", async function (req, res, next) {
       const categoryId = req.params.categoryId;
       //const storeID = req.body.storeID;
-      const menuDetail = req.body.menuDetail;
-      //const menuID = req.body.menuID;
+      //const menuDetail = req.body.menuDetail;
+      const menuId = req.body.menuId;
       const menuImg = req.body.menuImg;
       const menuName = req.body.menuName;
       const price = req.body.price;
   
       const storeRef = db.collection('store').doc("cafeAmazon");
       await storeRef.update({
-      //     "menu": await firebase.firestore.FieldValue.arrayRemove({ "category": categoryId, "menuDetail": menuDetail, "menuID": menuID, "menuImg": menuImg, "menuName": menuName })
-          "menu": await firebase.firestore.FieldValue.arrayRemove({ "category": categoryId, "menuDetail": menuDetail, "menuImg": menuImg, "menuName": menuName, "price": price})
+           "menu": await firebase.firestore.FieldValue.arrayRemove
+           ({ "category": categoryId, "menuId": menuId, "menuImg": menuImg, "menuName": menuName, "price": price })
       })
   });
 
