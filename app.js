@@ -29,7 +29,6 @@ const addproductRouter = require('./routes/addproductController');
 
 
 //กำหนดตัวแปรให้ controller
-app.use('/',indexRouter);
 app.use('/addcategory', addcategoryRouter);
 app.use('/addproduct', addproductRouter);
 

@@ -66,9 +66,13 @@ router.post('/addProducts', async function (req, res, next) {
 
    let getMenu = db.collection('store').doc('cafeAmazon');
    await getMenu.get().then(async doc => {
+      // let menuName_Form = req.body.menuName;
+      // let category_selector = req.body.category;
+      // let menuDetail_Form = req.body.menuDetails;
+      // let price_Form = req.body.price;
+      // let menuImg_file = req.body.menuImg;
 
       let category_selector = req.body.category;
-      let menuDetail_Form = req.body.menuDetail;
       let count_menuId = req.body.menuId; 
       let menuImg_file = req.body.menuImg;
       let menuName_Form = req.body.menuName;

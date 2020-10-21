@@ -69,15 +69,12 @@
                                 <button class="get-data btn shop-item-button"
                                     style="margin-right:5%;margin-left:7%; width:40%; background-color :mediumseagreen;">
                                     <a href="#" style="color: white; text-decoration: none;"> แก้ไข </a></button>
-                                <% categoriesList.forEach(category => { %>
-                                    <a href="/deleteMenu/<%= category.categoryId %>/<%= menu.menuId %>"  style="display: inline;">
-                                        <% }); %> 
+
+                                <form action="/deleteMenu/:categoryId" method="POST" style="display: inline;">
                                     <button class="get-data btn shop-item-button" value="Delete"
                                         style="width:40%; color:white;background-color :#CC3333;" data-toggle="modal"
                                         data-target="#myModal"> ลบสินค้า </button>
-                                    </a>
-                                
-                                
+                                </form>
 
                             </div>
                         </div>
