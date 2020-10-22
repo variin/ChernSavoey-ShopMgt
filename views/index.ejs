@@ -72,7 +72,7 @@
 
                                     <!-- <form action="/deleteMenu/:categoryId" method="POST" style="display: inline;"> -->
                                         <% categoriesList.forEach(category => { %>
-                                            <a href="/deleteMenu/<%= category.categoryId %>/<%= menu.menuId %>"  style="display: inline;">
+                                            <a href="/<%= category.categoryId %>/<%= menu.menuId %>/deleteMenu"  style="display: inline;">
                                                 <% }); %> 
                                             <button class="get-data btn shop-item-button" value="Delete"
                                                 style="width:40%; color:white;background-color :#CC3333;" data-toggle="modal"
