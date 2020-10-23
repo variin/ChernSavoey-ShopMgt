@@ -21,44 +21,33 @@ router.get("/", async (req, res) => {
       categoriesFilter = menuDetails.categories.filter((item) => item.category == categoryId)
       menuList = menuList.filter((item) => item.category == categoryId);
    }
-   console.log(storeId);
-   console.log('name' + shopName);
-   console.log(menuList);
-   console.log('cat ' + categoriesList);
-   console.log('list' + categoriesFilter);
 
    res.render("addproduct", { storeId, shopName, menuList, categoriesList, categoriesFilter });
 
 }
 );
 
-router.get("/:categoryId", async (req, res) => {
-   const storeId = req.params.storeId;
-   const categoryId = req.params.categoryId;
+// router.get("/:categoryId", async (req, res) => {
+//    const storeId = req.params.storeId;
+//    const categoryId = req.params.categoryId;
 
-   const menuDetails = await db.collection("store")
-      .doc("cafeAmazon")
-      .get()
-      .then((querySnapshot) => querySnapshot.data());
+//    const menuDetails = await db.collection("store")
+//       .doc("cafeAmazon")
+//       .get()
+//       .then((querySnapshot) => querySnapshot.data());
 
-   const shopName = menuDetails.storeName;
-   let menuList = menuDetails.menu;
-   const categoriesList = menuDetails.categories;
-   let categoriesFilter = [];
-   if (categoryId) {
-      categoriesFilter = menuDetails.categories.filter((item) => item.category == categoryId)
-      menuList = menuList.filter((item) => item.category == categoryId);
-   }
-   console.log(storeId);
-   console.log(shopName);
-   console.log(menuList);
-   console.log(categoriesList);
-   console.log(categoriesFilter);
+//    const shopName = menuDetails.storeName;
+//    let menuList = menuDetails.menu;
+//    const categoriesList = menuDetails.categories;
+//    let categoriesFilter = [];
+//    if (categoryId) {
+//       categoriesFilter = menuDetails.categories.filter((item) => item.category == categoryId)
+//       menuList = menuList.filter((item) => item.category == categoryId);
+//    }
 
-   res.render("addproduct", { storeId, shopName, menuList, categoriesList, categoriesFilter, });
-}
-);
-
+//    res.render("addproduct", { storeId, shopName, menuList, categoriesList, categoriesFilter, });
+// }
+// );
 
 
 //Add Product
@@ -66,24 +55,23 @@ router.post('/addProducts', async function (req, res, next) {
 
    let getMenu = db.collection('store').doc('cafeAmazon');
    await getMenu.get().then(async doc => {
-      // let menuName_Form = req.body.menuName;
-      // let category_selector = req.body.category;
-      // let menuDetail_Form = req.body.menuDetails;
-      // let price_Form = req.body.price;
-      // let menuImg_file = req.body.menuImg;
-
       let category_selector = req.body.category;
-      let count_menuId = req.body.menuId; 
+      let menuDetail_Form = req.body.menuDetail;
+      let menuId = [];
+
       let menuImg_file = req.body.menuImg;
       let menuName_Form = req.body.menuName;
       let price_Form = req.body.price;
-     
 
-      console.log("menuName_Form " + menuName_Form);
+      await menuId.push(doc.data());
+      let count_menuId = menuId.map(c => c.menu.length + 1);
+      count_menuId = parseInt(count_menuId)
+      console.log(count_menuId)
       let new_Products =
       {
-         
+
          category: category_selector,
+         menuDetail: menuDetail_Form,
          menuId: count_menuId,
          menuImg: menuImg_file,
          menuName: menuName_Form,

@@ -19,12 +19,10 @@ router.post('/addCategories', async function (req, res, next) {
 
         } else {
             let getCategories = db.collection('store').doc('cafeAmazon');
-            console.log('getCategories' + getCategories)
             await getCategories.get().then(async doc => {
                 await old_Categories_to_count.push(doc.data());
                 let count_Categories = old_Categories_to_count.map(c => c.categories.length + 1);
                 count_Categories = parseInt(count_Categories)
-                console.log(count_Categories);
 
                 let categoryName_Form = req.body.categoryName;
                 

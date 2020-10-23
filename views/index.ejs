@@ -34,7 +34,7 @@
                 <div class="list-group">
 
                     <% categoriesList.forEach((categories) => { %>
-                    <li class="list-group-item"><a
+                    <li class="list-group-item" ><a
                             href="/<%= categories.categoryId %>"><%= categories.categoryName %></a>
                     </li>
                     <% }); %>
@@ -51,10 +51,11 @@
 
             <!-- /.col-lg-3 -->
 
-            <div class="col-lg-9" style="margin-top: 10%; margin-bottom: 10%;">
+            <div class="col-lg-9" style="margin-top: 8%; margin-bottom: 10%;">
 
                 <div class="row">
                     <% menuList.forEach((menu) => { %>
+
                     <div class="col-lg-4 col-md-6 mb-4" id="menuList">
                         <div class="card h-100">
                             <img class="card-img-top" src="<%= menu.menuImg %>" alt="">
@@ -66,25 +67,45 @@
                                 <p class="card-text"><%= menu.menuDetail %></p>
                             </div>
                             <div class="card-footer">
-                                <button class="get-data btn shop-item-button"
+                                <!-- <button class="get-data btn shop-item-button"
                                     style="margin-right:5%;margin-left:7%; width:40%; background-color :mediumseagreen;">
-                                    <a href="#" style="color: white; text-decoration: none;"> แก้ไข </a></button>
+                                    <a href="#" style="color: white; text-decoration: none;"> แก้ไข </a></button> -->
 
-                                    <!-- <form action="/deleteMenu/:categoryId" method="POST" style="display: inline;"> -->
-                                        <% categoriesList.forEach(category => { %>
-                                            <a href="/<%= category.categoryId %>/<%= menu.menuId %>/deleteMenu"  style="display: inline;">
-                                                <% }); %> 
-                                            <button class="get-data btn shop-item-button" value="Delete"
-                                                style="width:40%; color:white;background-color :#CC3333;" data-toggle="modal"
-                                                data-target="#myModal"> ลบสินค้า </button>
-                                            </a>
-                                        <!-- </form> -->
-                                            
+                                <!-- Delete Button -->
 
+                                <button class="get-data btn shop-item-button" value="Delete"
+                                    style="width:40%; color:white;background-color :#CC3333; margin-left: 30%;"
+                                    data-toggle="modal" data-target="#myModal"> ลบสินค้า </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade font" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-body" style="text-align: center;">
+                                                <p>ยืนยันการลบสินค้า</p>
+                                            </div>
+                                            <div class="modal-footer"> 
+                                                <form action="/<%=menu.category%>/<%= menu.menuId %>/deleteMenu"
+                                                    method="POST">
+                                                    <button type="submit" class="btn btn-default"
+                                                        style="background-color:#CC3333; color: white;"
+                                                         value="Delete">ยืนยัน</button>
+                                                </form>
+
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">ยกเลิก</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /Delete Button -->
                             </div>
                         </div>
 
                     </div>
+
 
                     <% }); %>
                 </div>
@@ -98,27 +119,6 @@
     </div>
     <!-- /.container -->
 
-    <!-- Delete Button -->
-    <!-- Modal -->
-    <!-- <div class="modal fade font" id="myModal" role="dialog">
-        <div class="modal-dialog"> -->
-
-            <!-- Modal content-->
-            <!-- <div class="modal-content">
-                <div class="modal-body" style="text-align: center;">
-                    <p>ยืนยันการลบสินค้า</p>
-                </div>
-                <div class="modal-footer">
-                <form action="/deleteMenu/:categoryId" method="POST">
-                    <button type="button" class="btn btn-default" style="background-color:#CC3333; color: white;"
-                        data-dismiss="modal" value="Delete">ยืนยัน</button>
-                </form>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-                </div>
-            </div> -->
-
-        <!-- </div>
-    </div> -->
 </body>
 
 <style>
