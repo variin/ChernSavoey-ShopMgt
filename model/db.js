@@ -7,6 +7,8 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
+var bucket = admin.storage().bucket();
+
 firestoreService.initializeApp(serviceAccount, appName);
 
 firestoreService
@@ -17,5 +19,6 @@ firestoreService
   });
 
 const db = admin.firestore();
+const storage = admin.storage().bucket();
 
-module.exports = db;
+module.exports = {db,storage};

@@ -1,6 +1,9 @@
+const { response } = require('express');
 var express = require('express');
+const { storage } = require('firebase-admin');
 const db = require('../model/db');
 var router = express.Router();
+
 
 
 //Display Categories (Select option)
@@ -55,7 +58,7 @@ router.post('/addProducts', async function (req, res, next) {
 
    let getMenu = db.collection('store').doc('cafeAmazon');
    await getMenu.get().then(async doc => {
-      let category_selector = req.body.category;
+      let select_category = req.body.category;
       let menuDetail_Form = req.body.menuDetail;
       let menuId = [];
 
@@ -70,7 +73,7 @@ router.post('/addProducts', async function (req, res, next) {
       let new_Products =
       {
 
-         category: category_selector,
+         category: select_category,
          menuDetail: menuDetail_Form,
          menuId: count_menuId,
          menuImg: menuImg_file,
@@ -90,5 +93,27 @@ router.post('/addProducts', async function (req, res, next) {
    });
    res.redirect("/")
 });
+
+function uploadHandler(){
+   if (this.file) {
+      const fileName = this.file.name;
+      const targetRef = subBucketRef.child(fileName);
+      targetRef.put(this.file).then(response => {
+         console.log(response);
+         response.ref.getDownloadURL().then(photoURL => {
+            this.link = photoURL;
+         });
+      });
+   } else {
+      console.log("no file upload!!");
+   }
+},
+onfileChange(e){
+   const file = e.target.files[0];
+   this.file = file;
+   this.link = "";
+}
+}
+
 
 module.exports = router;
