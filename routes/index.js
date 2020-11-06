@@ -1,6 +1,5 @@
 var express = require('express');
-const db = require('../model/db');
-// const methodOverride = require('method-override');
+const { storage, db } = require('../model/db');
 
 var router = express.Router();
 

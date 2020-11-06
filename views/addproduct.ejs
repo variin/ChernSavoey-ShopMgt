@@ -21,7 +21,10 @@
       <div class="col-md-6"> <br />
         <h4 align="center"> แบบฟอร์มบันทึกสินค้า </h4>
         <hr />
-        <form name="addproduct" action="/addproduct/addProducts" method="POST" enctype="multipart/form-data"
+        <form name="addproduct" 
+        action="/addproduct/addProducts"
+         method="POST" 
+        enctype="multipart/form-data"
           class="form-horizontal">
           <div class="form-group">
             <div class="col-sm-12">
@@ -33,9 +36,9 @@
             <div class="col-sm-12">
               <p> ประเภทสินค้า</p>
 
-              <select name="category_selector" class="form-control form-control-sm">
+              <select name="select_category" class="form-control form-control-sm">
                 <% categoriesList.forEach((categories) => { %>
-                <option value="<% categories.categoryId  %> "> <%= categories.categoryName %></option>
+                <option value="<%= categories.categoryId %>"> <%= categories.categoryName %></option>
                 <% }); %>
               </select>
 
@@ -56,7 +59,6 @@
             <div class="col-sm-8 info">
               <p> ภาพสินค้า </p>
               <input type="file" name="menuImg" class="form-control" />
-              <!-- <input type="text" name="menuImg" class="form-control" /> -->
             </div>
           </div>
           <div class="form-group">

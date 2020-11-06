@@ -5,19 +5,15 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const bodyParser = require('body-parser');
-// const methodOverride = require('method-override');
+
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json({ limit: '50mb' }));
-// app.use(bodyParser.urlencoded({
-//     limit: '50mb',
-//     extended: true,
-//     parameterLimit: 50000
-// }));
 
-// app.use(methodOverride('_method'));
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,10 +27,6 @@ const addproductRouter = require('./routes/addproductController');
 //กำหนดตัวแปรให้ controller
 app.use('/addcategory', addcategoryRouter);
 app.use('/addproduct', addproductRouter);
-
-
-
-
 
 app.use(logger('dev'));
 
