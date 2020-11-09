@@ -2,80 +2,81 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  -->
+
 
   <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
   <script src="/javascripts/photoUpload.js"></script>
 </head>
 
 <body>
+
+  <%- include ("layout.ejs") %>
+
   <div class="container font">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6"> <br />
-        <h4 align="center"> แบบฟอร์มบันทึกสินค้า </h4>
-        <hr />
-        <form name="addproduct" 
-        action="/addproduct/addProducts"
-         method="POST" 
-        enctype="multipart/form-data"
-          class="form-horizontal">
-          <div class="form-group">
-            <div class="col-sm-12">
-              <p> ชื่อสินค้า</p>
-              <input type="text" name="menuName" class="form-control" required placeholder="ชื่อสินค้า" />
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <p> ประเภทสินค้า</p>
+    <div class="form-group" style="width:100% ;">
+      <h4 style="text-align: center;font-size:20px;padding: 25px; ">แบบฟอร์มบันทึกสินค้า</h4>
+      <hr />
 
-              <select name="select_category" class="form-control form-control-sm">
-                <% categoriesList.forEach((categories) => { %>
-                <option value="<%= categories.categoryId %>"> <%= categories.categoryName %></option>
-                <% }); %>
-              </select>
 
-            </div>
+      <form name="addproduct" action="/addproduct/addProducts" method="POST" enctype="multipart/form-data">
+        <div class="input">
+          <label for="">ชื่อประเภทสินค้า</label>
+          <input type="text" name="menuName" class="form-control" required placeholder="ชื่อสินค้า" />
+
+          <div class="input">
+            <p> ประเภทสินค้า</p>
+
+            <select name="select_category" class="form-control form-control-sm">
+              <% categoriesList.forEach((categories) => { %>
+              <option value="<%= categories.categoryId %>"> <%= categories.categoryName %></option>
+              <% }); %>
+            </select>
+
           </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <p> รายละเอียดสินค้า </p>
-              <textarea name="menuDetails" class="form-control" rows="3" required
-                placeholder="รายละเอียดสินค้า"></textarea>
-            </div>
+         
+          <div class="col-sm-12">
+            <p> รายละเอียดสินค้า </p>
+            <textarea name="menuDetails" class="form-control" rows="3" required
+              placeholder="รายละเอียดสินค้า"></textarea>
           </div>
-          <div class="form-group">
-            <div class="col-sm-3">
-              <p> ราคา (บาท) </p>
-              <input type="number" name="price" class="form-control" required placeholder="ราคา" />
-            </div>
-            <div class="col-sm-8 info">
-              <p> ภาพสินค้า </p>
-              <input type="file" name="menuImg" class="form-control" />
-            </div>
+     
+          <div class="col-sm-3">
+            <p> ราคา (บาท) </p>
+            <input type="number" name="price" class="form-control" required placeholder="ราคา" />
           </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <button type="submit" class="btn btn-success" name="btnadd"> + เพิ่มสินค้า </button>
-            </div>
+          <div class="col-sm-8 info">
+            <p> ภาพสินค้า </p>
+            <input type="file" name="menuImg" class="form-control" />
           </div>
-        </form>
-      </div>
+       
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn-success" name="btnadd"> + เพิ่มสินค้า </button>
+          </div>
+      
+      </form>
     </div>
   </div>
+
+
 
 </body>
 
 <style>
   .font {
     font-family: kanit;
+  }
+
+  .input {
+    width: 400px;
+    padding: 12px 20px;
   }
 </style>
 
