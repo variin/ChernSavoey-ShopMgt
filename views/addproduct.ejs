@@ -29,38 +29,37 @@
       <form name="addproduct" action="/addproduct/addProducts" method="POST" enctype="multipart/form-data">
         <div class="input">
           <label for="">ชื่อประเภทสินค้า</label>
-          <input type="text" name="menuName" class="form-control" required placeholder="ชื่อสินค้า" />
+          <input type="text" name="menuName" class="form-control"
+            required placeholder="ชื่อสินค้า" />
 
           <div class="input">
-            <p> ประเภทสินค้า</p>
-
-            <select name="select_category" class="form-control form-control-sm">
+            <label>ประเภทสินค้า</label>
+            <select name="select_category" class="form-control form-control-sm" >
               <% categoriesList.forEach((categories) => { %>
               <option value="<%= categories.categoryId %>"> <%= categories.categoryName %></option>
               <% }); %>
             </select>
-
           </div>
-         
-          <div class="col-sm-12">
-            <p> รายละเอียดสินค้า </p>
+
+          <div class="row-sm-12">
+            <label>รายละเอียดสินค้า</label>
             <textarea name="menuDetails" class="form-control" rows="3" required
               placeholder="รายละเอียดสินค้า"></textarea>
           </div>
-     
-          <div class="col-sm-3">
-            <p> ราคา (บาท) </p>
+
+          <div class="col-sm-2" style="display: inline-block;">
+            <label>ราคา (บาท)</label>
             <input type="number" name="price" class="form-control" required placeholder="ราคา" />
           </div>
-          <div class="col-sm-8 info">
-            <p> ภาพสินค้า </p>
-            <input type="file" name="menuImg" class="form-control" />
+          <div class="col-sm-5 info" style="display: inline-block;">
+           <label>ภาพสินค้า</label>
+            <input type="file" name="menuImg" class="form-control"/>
           </div>
-       
+
           <div class="col-sm-12">
             <button type="submit" class="btn btn-success" name="btnadd"> + เพิ่มสินค้า </button>
           </div>
-      
+
       </form>
     </div>
   </div>
@@ -74,9 +73,9 @@
     font-family: kanit;
   }
 
-  .input {
-    width: 400px;
-    padding: 12px 20px;
+  .form-control {
+    width: 100% !important;
+    margin-bottom: 20px;
   }
 </style>
 
