@@ -15,20 +15,6 @@ admin.initializeApp({
   measurementId: "G-0KGMXHYKEJ"
 });
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: process.env.FIRESTORE_DATABASE,
-//   storageBucket: process.env.STORAGE_BUCKET,
-// });
-
-
-// firestoreService
-//   .backups(['store', 'users']) // Array of collection's name is OPTIONAL
-//   .then((collections) => {
-//     // You can do whatever you want with collections
-//     console.log(JSON.stringify(collections));
-//   });
-
 const db = admin.firestore();
 const storage = admin.storage();
 
