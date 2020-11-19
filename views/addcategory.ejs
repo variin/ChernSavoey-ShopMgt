@@ -8,9 +8,8 @@
   <!--css-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-  <!--font-->
-  <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/addcategory.css">
+  
 
 
 </head>
@@ -22,12 +21,12 @@
   <%- include ("layout.ejs") %>
   
   <div class="container font"><br />
-    <h4 style="text-align: center;font-size:20px;padding: 15px; ">แบบฟอร์มบันทึกประเภทสินค้า</h4>
+    <p>แบบฟอร์มบันทึกประเภทสินค้า</p>
     
     <form action="/addcategory/addCategories" method="post">
-      <div class="form-group" style="width:100% ;">
+      <div class="form-group">
         <label for="">ชื่อประเภทสินค้า</label>
-        <input type="text" name="categoryName" value="" class="form-control" id="addCategories" style="width: 100% !important;">
+        <input type="text" name="categoryName" value="" class="form-control" id="addCategories">
       </div>
       <input type="submit" value="บันทึกข้อมูล" class="btn btn-success">
     </form> 
@@ -35,12 +34,5 @@
   
 
 </body>
-
-<style>
-  .font {
-    font-family: kanit;
-  }
-</style>
-
 
 </html>

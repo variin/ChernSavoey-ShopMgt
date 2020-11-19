@@ -5,12 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet'
-        type='text/css'>
     <!-- Delete Button -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,20 +35,20 @@
                             href="/<%= categories.categoryId %>"><%= categories.categoryName %></a>
                     </li>
                     <% }); %>
-                    <a href="/addcategory" class="list-group-item"
-                        style="background-color:mediumseagreen;color: oldlace;">เพิ่มประเภทสินค้า</a>
+                    <a href="/addcategory" class="list-group-item add"
+                        >เพิ่มประเภทสินค้า</a>
                 </div>
 
-                <div class="list-group" style="margin-top:10px;">
-                    <a href="/addproduct" class="list-group-item"
-                        style="background-color:mediumseagreen;color: oldlace;">เพิ่มสินค้าสินค้า</a>
+                <div class="list-group addproduct">
+                    <a href="/addproduct" class="list-group-item add"
+                       >เพิ่มสินค้าสินค้า</a>
                 </div>
 
             </div>
 
             <!-- /.col-lg-3 -->
 
-            <div class="col-lg-9" style="margin-top: 1%; margin-bottom: 10%;">
+            <div class="col-lg-9">
 
                 <div class="row">
                     <% menuList.forEach((menu) => { %>
@@ -69,8 +67,7 @@
                             </div>
                             <div class="card-footer">
 
-                                <button class="get-data btn shop-item-button" value="Delete"
-                                    style="width:40%; color:white;background-color :#CC3333; margin-left: 30%;"
+                                <button class="get-data btn shop-item-button deletebutton" value="Delete"
                                     data-toggle="modal" data-target="#myModal"> ลบสินค้า </button>
 
                                 <!-- Modal -->
@@ -78,14 +75,13 @@
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
-                                            <div class="modal-body" style="text-align: center;">
+                                            <div class="modal-body title-popover">
                                                 <p>ยืนยันการลบสินค้า</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <form action="/<%=menu.category%>/<%= menu.menuId %>/deleteMenu"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-default"
-                                                        style="background-color:#CC3333; color: white;"
+                                                    <button type="submit" class="btn btn-default btn-popover"
                                                         value="Delete">ยืนยัน</button>
                                                 </form>
 
@@ -109,10 +105,6 @@
             <!-- /.col-lg-9 -->
 
         </div>
-        <!-- /.row -->
-        <!-- <div id="overlay">
-            <div class="spinner"></div>
-        </div> -->
 
     </div>
     <!-- /.container -->
@@ -122,48 +114,6 @@
     </div>
 
 </body>
-
-<style>
-    .font {
-        font-family: kanit;
-    }
-
-    .spinner {
-        width: 80px;
-        height: 80px;
-
-        border: 2px solid #f3f3f3;
-        border-top: 3px solid #f25a41;
-        border-radius: 100%;
-
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-
-        animation: spin 1s infinite linear;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    #overlay {
-        height: 100%;
-        width: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-</style>
 
 <script>
     var overlay = document.getElementById("overlay");
