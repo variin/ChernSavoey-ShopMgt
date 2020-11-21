@@ -1,0 +1,22 @@
+ p{
+    text-align: center;
+    font-size:20px;
+    padding: 25px;
+  }
+  .font {
+    font-family: kanit;
+  }
+
+  .form-control {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+  .form-group{
+      width: 100%;
+  }
+ .col-sm-2{
+    display: inline-block;
+ }
+ .col-sm-5 {
+    display: inline-block;
+ }

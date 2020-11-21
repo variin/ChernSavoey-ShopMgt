@@ -5,12 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet'
-        type='text/css'>
     <!-- Delete Button -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -33,31 +31,33 @@
                 <div class="list-group">
 
                     <% categoriesList.forEach((categories) => { %>
-                    <li class="list-group-item" ><a
+                    <li class="list-group-item"><a
                             href="/<%= categories.categoryId %>"><%= categories.categoryName %></a>
                     </li>
                     <% }); %>
-                    <a href="/addcategory" class="list-group-item"
-                        style="background-color:mediumseagreen;color: oldlace;">เพิ่มประเภทสินค้า</a>
+                    <a href="/addcategory" class="list-group-item add"
+                        >เพิ่มประเภทสินค้า</a>
                 </div>
 
-                <div class="list-group" style="margin-top:10px;">
-                    <a href="/addproduct" class="list-group-item"
-                        style="background-color:mediumseagreen;color: oldlace;">เพิ่มสินค้าสินค้า</a>
+                <div class="list-group addproduct">
+                    <a href="/addproduct" class="list-group-item add"
+                       >เพิ่มสินค้า</a>
                 </div>
 
             </div>
 
             <!-- /.col-lg-3 -->
 
-            <div class="col-lg-9" style="margin-top: 1%; margin-bottom: 10%;">
+            <div class="col-lg-9">
 
                 <div class="row">
                     <% menuList.forEach((menu) => { %>
 
                     <div class="col-lg-4 col-md-6 mb-4" id="menuList">
                         <div class="card h-100">
-                            <img class="card-img-top" src="http://localhost:3000/addproduct/image/<%= menu.menuImg %>" alt="">
+                            <img class="card-img-top" src="http://localhost:3000/addproduct/image/<%= menu.menuImg %>"
+                                alt="">
+
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <%= menu.menuName %>
@@ -66,14 +66,8 @@
                                 <p class="card-text"><%= menu.menuDetail %></p>
                             </div>
                             <div class="card-footer">
-                                <!-- <button class="get-data btn shop-item-button"
-                                    style="margin-right:5%;margin-left:7%; width:40%; background-color :mediumseagreen;">
-                                    <a href="#" style="color: white; text-decoration: none;"> แก้ไข </a></button> -->
 
-                                <!-- Delete Button -->
-
-                                <button class="get-data btn shop-item-button" value="Delete"
-                                    style="width:40%; color:white;background-color :#CC3333; margin-left: 30%;"
+                                <button class="get-data btn shop-item-button deletebutton" value="Delete"
                                     data-toggle="modal" data-target="#myModal"> ลบสินค้า </button>
 
                                 <!-- Modal -->
@@ -81,15 +75,14 @@
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
-                                            <div class="modal-body" style="text-align: center;">
+                                            <div class="modal-body title-popover">
                                                 <p>ยืนยันการลบสินค้า</p>
                                             </div>
-                                            <div class="modal-footer"> 
+                                            <div class="modal-footer">
                                                 <form action="/<%=menu.category%>/<%= menu.menuId %>/deleteMenu"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-default"
-                                                        style="background-color:#CC3333; color: white;"
-                                                         value="Delete">ยืนยัน</button>
+                                                    <button type="submit" class="btn btn-default btn-popover"
+                                                        value="Delete">ยืนยัน</button>
                                                 </form>
 
                                                 <button type="button" class="btn btn-default"
@@ -99,12 +92,11 @@
 
                                     </div>
                                 </div>
-                                <!-- /Delete Button -->
+
                             </div>
                         </div>
 
                     </div>
-
 
                     <% }); %>
                 </div>
@@ -113,17 +105,22 @@
             <!-- /.col-lg-9 -->
 
         </div>
-        <!-- /.row -->
 
     </div>
     <!-- /.container -->
 
+    <div id="overlay">
+        <div class="spinner"></div>
+    </div>
+
 </body>
 
-<style>
-    .font {
-        font-family: kanit;
-    }
-</style>
+<script>
+    var overlay = document.getElementById("overlay");
+
+    window.addEventListener('load', function () {
+        overlay.style.display = 'none';
+    })
+</script>
 
 </html>
