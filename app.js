@@ -5,15 +5,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const bodyParser = require('body-parser');
-
-
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,11 +17,15 @@ app.set('view engine', 'ejs');
 //ดึง controller มาใช้
 const addcategoryRouter = require('./routes/addcategoryController');
 const addproductRouter = require('./routes/addproductController');
+const shop = require('./routes/shopController');
+
 
 
 //กำหนดตัวแปรให้ controller
+app.use('/', indexRouter);
 app.use('/addcategory', addcategoryRouter);
 app.use('/addproduct', addproductRouter);
+ app.use('/shop', shop);
 
 app.use(logger('dev'));
 
@@ -35,8 +34,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
 
 
 // catch 404 and forward to error handler
