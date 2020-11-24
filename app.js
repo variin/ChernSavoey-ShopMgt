@@ -19,8 +19,6 @@ const addcategoryRouter = require('./routes/addcategoryController');
 const addproductRouter = require('./routes/addproductController');
 const shop = require('./routes/shopController');
 
-
-
 //กำหนดตัวแปรให้ controller
 app.use('/', indexRouter);
 app.use('/addcategory', addcategoryRouter);
@@ -32,6 +30,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+/*Filter Server and Require for Socket io*/
+const PORT = process.env.PORT || 3000;
+const server = app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}`);
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
