@@ -32,7 +32,7 @@
 
                     <% categoriesList.forEach((categories) => { %>
                     <li class="list-group-item"><a
-                            href="/<%= categories.categoryId %>"><%= categories.categoryName %></a>
+                            href="shop/<%= categories.categoryId %>"><%= categories.categoryName %></a>
                     </li>
                     <% }); %>
                     <a href="/addcategory" class="list-group-item add"
@@ -79,7 +79,7 @@
                                                 <p>ยืนยันการลบสินค้า</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <form action="/<%=menu.category%>/<%= menu.menuId %>/deleteMenu"
+                                                <form action="shop/<%=menu.category%>/<%= menu.menuId %>/deleteMenu"
                                                     method="POST">
                                                     <button type="submit" class="btn btn-default btn-popover"
                                                         value="Delete">ยืนยัน</button>
