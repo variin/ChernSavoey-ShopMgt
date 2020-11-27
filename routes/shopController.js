@@ -1,7 +1,6 @@
-var express = require('express');
+const express = require('express');
 const { storage, db } = require('../model/db');
-
-var router = express.Router();
+const router = express.Router();
 
 
 // Display Menu

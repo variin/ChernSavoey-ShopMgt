@@ -1,8 +1,7 @@
 const admin = require('firebase-admin');
-// const firestoreService = require('firestore-export-import');
 let serviceAccount = require('./it60-42-choen-savoey-59a3efed1682.json');
 
-// import "firebase/storage";;
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   apiKey: "AIzaSyDiLRSKZJU8F5UhTFHmMyHa0qB1CAzMuLw",
