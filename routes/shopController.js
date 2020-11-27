@@ -1,15 +1,15 @@
 const express = require('express');
-const { storage, db } = require('../model/db');
+const {db} = require('../model/db');
 const router = express.Router();
 
 
 // Display Menu
-router.get("/", async (req, res) => {
+router.get("/:storeId", async (req, res) => {
       const storeId = req.params.storeId;
       const categoryId = req.params.categoryId;
 
       const menuDetails = await db.collection("store")
-            .doc("cafeAmazon")
+            .doc(storeId)
             .get()
             .then((querySnapshot) => querySnapshot.data());
 
@@ -27,12 +27,12 @@ router.get("/", async (req, res) => {
 }
 );
 
-router.get("/:categoryId", async (req, res) => {
+router.get("/:storeId/:categoryId", async (req, res) => {
       const storeId = req.params.storeId;
       const categoryId = req.params.categoryId;
 
       const menuDetails = await db.collection("store")
-            .doc("cafeAmazon")
+            .doc(storeId)
             .get()
             .then((querySnapshot) => querySnapshot.data());
 
@@ -49,20 +49,21 @@ router.get("/:categoryId", async (req, res) => {
 }
 );
 //Delete Menu
-router.post("/:categoryId/:menuId/deleteMenu", async function (req, res, next) {
+router.post("/:storeId/:categoryId/:menuId/deleteMenu", async function (req, res, next) {
+      const storeId = req.params.storeId;
       const menuId = req.params.menuId;
 
-      const menuDetails = await db.collection("store").doc("cafeAmazon").get()
+      const menuDetails = await db.collection("store").doc(storeId).get()
             .then((querySnapshot) =>
                   querySnapshot.data()
             );
       let menuList = menuDetails.menu;
       if (menuId) {
             let menuList_remove = menuList.filter((item) => item.menuId != menuId);
-            await db.collection("store").doc("cafeAmazon").update({ menu: menuList_remove })
+            await db.collection("store").doc(storeId).update({ menu: menuList_remove })
       }
 
-      res.redirect("/");
+      res.redirect("/shop/");
 });
 
 module.exports = router;
