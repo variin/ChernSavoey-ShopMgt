@@ -65,6 +65,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// route for logging out
+app.get("/logout", function (req, res) {
+  req.session.destroy(function (err) {
+    userProfile = null;
+    req.logout();
+    res.redirect("/");
+  });
+});
 
 
 module.exports = app;
